@@ -1,0 +1,11 @@
+import pandas as pd
+data = pd.read_csv("quizTask.csv")
+data['total'] = 0
+for j in range(0,26):
+    for i in range(2,12):
+        if (data.iloc[j,i]) == (data.iloc[26,i]):
+            data.iloc[j,12] += 1
+data.to_csv("modified.csv",index=False)
+new = data[['Name','department','total']]
+new = new.iloc[0:26]
+new.to_csv("new.csv",index=False)
